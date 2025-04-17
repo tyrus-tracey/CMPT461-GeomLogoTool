@@ -1,3 +1,35 @@
+@misc{wang2024moge,
+    title={MoGe: Unlocking Accurate Monocular Geometry Estimation for Open-Domain Images with Optimal Training Supervision},
+    author={Wang, Ruicheng and Xu, Sicheng and Dai, Cassie and Xiang, Jianfeng and Deng, Yu and Tong, Xin and Yang, Jiaolong},
+    year={2024},
+    eprint={2410.19115},
+    archivePrefix={arXiv},
+    primaryClass={cs.CV},
+    url={https://arxiv.org/abs/2410.19115}, 
+}
+
+@ARTICLE{careagaColorful,
+ author={Chris Careaga and Ya\u{g}{\i}z Aksoy},
+ title={Colorful Diffuse Intrinsic Image Decomposition in the Wild},
+ journal={ACM Trans. Graph.},
+ year={2024},
+ volume = {43},
+ number = {6},
+ articleno = {178},
+ numpages = {12},
+}
+
+@ARTICLE{careagaIntrinsic,
+ author={Chris Careaga and Ya\u{g}{\i}z Aksoy},
+ title={Intrinsic Image Decomposition via Ordinal Shading},
+ journal={ACM Trans. Graph.},
+ year={2023},
+ volume = {43},
+ number = {1},
+ articleno = {12},
+ numpages = {24},
+}
+
 import tkinter
 from tkinter import ttk
 from tkinter import filedialog as fd
