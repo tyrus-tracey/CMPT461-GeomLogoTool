@@ -227,7 +227,8 @@ def composite():
     alb = Image.fromarray((alb*255).astype(np.uint8))
     #alb.save("test1.png")
     alb.putalpha(255)
-    alb = Image.alpha_composite(alb,logo_img)
+    l_img = logo_img.resize(alb.size)
+    alb = Image.alpha_composite(alb,l_img)
     #alb.save("test.png")
     #Convert albedo back to array
     alb = np.asarray(alb)
