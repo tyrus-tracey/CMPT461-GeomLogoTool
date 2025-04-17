@@ -50,7 +50,8 @@ class UVTransformOperator(Operator):
                         loop_uv.uv = matRot @ loop_uv.uv
 
                     # Apply scaling
-                    loop_uv.uv *= scene.uv_scale
+                    loop_uv.uv.x *= scene.uv_scale[0]
+                    loop_uv.uv.y *= scene.uv_scale[1]
 
         # Update the mesh to reflect the changes
         bmesh.update_edit_mesh(obj.data)
@@ -70,7 +71,7 @@ class UVControlResetOperator(Operator):
         scene = bpy.context.scene
         scene.uv_translation = Vector((0,0))
         scene.uv_rotation = 0.0
-        scene.uv_scale = 1.0
+        scene.uv_scale = Vector((1.0,1.0))
         return {'FINISHED'}
     
 # Creates a camera to render the applied logo from the scene
@@ -172,7 +173,7 @@ class RenderPanel(Panel):
 
             # Scale slider
             row = layout.row()
-            row.prop(context.scene, "uv_scale", text="Scale")
+            row.prop(context.scene, "uv_scale", text="Scale (X,Y)")
             
             # Apply button
             row = layout.row()
@@ -210,9 +211,10 @@ def register():
         soft_max=360
     )
 
-    bpy.types.Scene.uv_scale = bpy.props.FloatProperty(
-        name="Scale",
-        default=1.0,
+    bpy.types.Scene.uv_scale = bpy.props.FloatVectorProperty(
+        name="Scale (X,Y)",
+        size=2,
+        default=(1.0,1.0),
         soft_min=0.01,
         soft_max=10.0
     )

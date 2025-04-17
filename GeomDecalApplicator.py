@@ -1,5 +1,6 @@
 import bpy
 import bmesh
+import os.path
 from mathutils import Vector
 import mathutils
 from bpy_extras.io_utils import ImportHelper
@@ -40,7 +41,7 @@ class GeomAwareDecalOperator(Operator):
             return {'CANCELLED'}
         # Enter to apply texture and finish
         if event.type == 'RET':
-            self.applyTex(context.object)
+            self.applyTex(context.object, context)
             bpy.ops.object.mode_set(mode='OBJECT')
             self.report({'INFO'}, "Operation finished.")
             return {'FINISHED'}
@@ -138,9 +139,9 @@ class GeomAwareDecalOperator(Operator):
         else:
             return False, None
             
-    def applyTex(self, obj):
-        # Grab the most recently-added image, which is the one loaded from the dialogue
-        img = bpy.data.images[0]
+    def applyTex(self, obj, context):
+        # Grab the logo image loaded into Blender's data struct
+        img = bpy.data.images.get(context.scene.logo_filename)
         
         mat_logo = bpy.data.materials.new(name="mat")
         mat_logo.use_nodes = True
@@ -185,6 +186,8 @@ class GeomAwareDecalOperator(Operator):
 addon_keymaps = []
 
 def register():
+    bpy.types.Scene.logo_filename = bpy.props.StringProperty()
+    
     bpy.utils.register_class(GeomAwareDecalOperator)
     bpy.utils.register_class(OpenPNGOperator)
     
@@ -200,6 +203,7 @@ def unregister():
     for km, kmi in addon_keymaps:
         km.keymap_items.remove(kmi)
     addon_keymaps.clear()
+    del bpy.types.Context.logo_filepath
     bpy.utils.unregister_class(GeomAwareDecalOperator)
     bpy.utils.unregister_class(OpenPNGOperator)
     
@@ -217,6 +221,7 @@ class OpenPNGOperator(Operator, ImportHelper):
     
     def execute(self, context):
         bpy.data.images.load(self.filepath)
+        context.scene.logo_filename = os.path.basename(self.filepath)
         return {'FINISHED'}
         
     def invoke(self, context, event):
