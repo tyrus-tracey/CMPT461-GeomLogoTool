@@ -134,6 +134,7 @@ class RenderImageOperator(Operator):
         node_viewlayer = render_nodes.get("Render Layers")
         node_composite = render_nodes.get("Composite")
         render_tree.links.new(node_viewlayer.outputs["DiffCol"], node_composite.inputs["Image"])
+        render_tree.links.new(node_viewlayer.outputs["Alpha"], node_composite.inputs["Alpha"])
         bpy.ops.render.render(write_still=True)
         
         # Revert invisibility
