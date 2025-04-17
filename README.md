@@ -2,7 +2,7 @@
 Apply desired logo images onto your Blender mesh such that it properly conforms to the geometry. This does NOT use projection!
 
 ## Installation Instructions
-After cloning the repo, open Blender and navigate to Edit > Preferences. Go to Add-ons and click on the downward arrow on the top-right to access the drop-down menu for "Instal from disk...". Locate the python scripts and install.
+After cloning the repo, open Blender and navigate to Edit > Preferences. Go to Add-ons and click on the downward arrow on the top-right to access the drop-down menu for "Install from disk...". Locate the python scripts and install.
 
 ## How to Use
 ### Applying the Logo
