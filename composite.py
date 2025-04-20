@@ -171,7 +171,12 @@ def build_geometry():
     fov_x, fov_y = utils3d.numpy.intrinsics_to_fov(intrinsics)
     fov_x,fov_y = round(np.rad2deg(fov_x),3), round(np.rad2deg(fov_y),3)
 
-    info.config(text="Mesh Saved. Camera Intrinsics Are: " + str(fov_x) + ", " + str(fov_y))
+    if width > height:
+        fov = fov_x
+    else:
+        fov = fov_y
+
+    info.config(text="Mesh Saved. FOV Is: " + str(fov))
 
 def logo_get():
     """
