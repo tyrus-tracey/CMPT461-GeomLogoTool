@@ -1,37 +1,3 @@
-"""
-@misc{wang2024moge,
-    title={MoGe: Unlocking Accurate Monocular Geometry Estimation for Open-Domain Images with Optimal Training Supervision},
-    author={Wang, Ruicheng and Xu, Sicheng and Dai, Cassie and Xiang, Jianfeng and Deng, Yu and Tong, Xin and Yang, Jiaolong},
-    year={2024},
-    eprint={2410.19115},
-    archivePrefix={arXiv},
-    primaryClass={cs.CV},
-    url={https://arxiv.org/abs/2410.19115}, 
-}
-
-@ARTICLE{careagaColorful,
- author={Chris Careaga and Yagiz Aksoy},
- title={Colorful Diffuse Intrinsic Image Decomposition in the Wild},
- journal={ACM Trans. Graph.},
- year={2024},
- volume = {43},
- number = {6},
- articleno = {178},
- numpages = {12},
-}
-
-@ARTICLE{careagaIntrinsic,
- author={Chris Careaga and Yagiz Aksoy},
- title={Intrinsic Image Decomposition via Ordinal Shading},
- journal={ACM Trans. Graph.},
- year={2023},
- volume = {43},
- number = {1},
- articleno = {12},
- numpages = {24},
-}
-"""
-
 import tkinter
 from tkinter import ttk
 from tkinter import filedialog as fd
@@ -171,7 +137,12 @@ def build_geometry():
     fov_x, fov_y = utils3d.numpy.intrinsics_to_fov(intrinsics)
     fov_x,fov_y = round(np.rad2deg(fov_x),3), round(np.rad2deg(fov_y),3)
 
-    info.config(text="Mesh Saved. Camera Intrinsics Are: " + str(fov_x) + ", " + str(fov_y))
+    if width > height:
+        fov = fov_x
+    else:
+        fov = fov_y
+
+    info.config(text="Mesh Saved. FOV Is: " + str(fov))
 
 def logo_get():
     """
