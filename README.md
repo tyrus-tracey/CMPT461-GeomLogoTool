@@ -57,7 +57,7 @@ To fine-tune the UV parameters, bring up the Render Panel by navigating to the s
 ![UV tuning](docs/blender2.png)
 
 ### Rendering Target Image
-After entering resolution information (of the original target image) and FOV (estimated by MoGe), export the result to a PNG by clicking on Render Image. This will saved in the same directory as where the Blender scene file is located.
+After entering resolution information (of the original target image) and FOV (estimated by MoGe), export the result to a PNG by clicking on Render Image. This will saved in the same directory as where the Blender scene file is located, so be sure to save your scene beforehand.
 
 ## Compositing
 After running the Blender Add-on you can use the 'Composite Image' option to insert the result into the image. First use 'Load Target' to select the image that will have the logo inserted into it. Then use 'Load Logo' to select the result of the Blender Add-on, the logo should have the same resolution as the target image. After each of the steps you should see a confirmation message at the bottom of the GUI. Use 'Composite Image' to generate the final image. On success a preview of the result will appear on screen and the image can be saved using 'Save Image'
