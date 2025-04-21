@@ -21,6 +21,8 @@ cd Intrinsic
 pip install .
 ```
 
+For more details you can visit the GitHub pages of the two projects linked above
+
 ## Blender Add-on Installation Instructions
 Open Blender and navigate to Edit > Preferences. Go to Add-ons and click on the downward arrow on the top-right to access the drop-down menu for "Install from disk...". Locate the cloned Python scripts GeomDecalApplicator.py and RenderPanel.py to install.
 
@@ -30,7 +32,7 @@ The script can be run by using the following command:
 The script will then require 5 to 10 seconds to load the MoGe and Intrinsic Image Decomposition models before the GUI appears
 
 ### Building Geometry
-First use 'Load Target' to select the image, on success a preview of the image will appear on screen. Then use 'Build Geometry' to build the mesh. Once finished you will be prompted to select a folder in which to save the mesh. The camera FOV will also be displayed which will be needed for rendering in the blender Add-on. You can then use this mesh in the Blender Add-on.
+First use 'Load Target' to select the image, on success a preview of the image will appear on screen. Then use 'Build Geometry' to build the mesh. Once finished you will be prompted to select a folder in which to save the mesh. The camera FOV will also be displayed which will be needed for rendering in the Blender Add-on. You can then use this mesh in the Blender Add-on.
 
 ### Applying Target Image
 Once your scene geometry from MoGE is loaded into Blender, simply press F8 to execute the add-on. 
