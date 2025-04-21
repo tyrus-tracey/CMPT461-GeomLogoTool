@@ -36,7 +36,7 @@ The script will then require 5 to 10 seconds to load the MoGe and Intrinsic Imag
 ### Building Geometry
 First use 'Load Target' to select the image, on success a preview of the image will appear on screen. Then use 'Build Geometry' to build the mesh. Once finished you will be prompted to select a folder in which to save the mesh. The camera FOV will also be displayed which will be needed for rendering in the Blender Add-on. You can then use this mesh in the Blender Add-on. 
 
-Note that depending on hardware specs, the mesh may need to be first decimated to reduce computation time.
+Note that depending on hardware specs, the mesh may need to be first decimated to reduce computation time. Our machines showed good performance at a max of ~200,000 faces.
 
 ![Creating a modifier](docs/deci1.png)
 
@@ -49,7 +49,7 @@ Note that depending on hardware specs, the mesh may need to be first decimated t
 ### Applying Target Image
 Once your scene geometry from MoGE is loaded into Blender, simply press F8 to execute the add-on. 
 First load your PNG logo image. Once loaded, the 3D cursor is brought up to indicate where on the geometry you would like to apply the logo. You are free to move the 3D Viewport around to direct the target region. You can then use the mousewheel to expand or shrink the selection region.
-Once the desired target region is selected, press Enter to apply the logo image as a texture. Our machines showed good performance at around ~200,000 faces.
+Once the desired target region is selected, press Enter to apply the logo image as a texture. 
 
 ### Tuning Image Placement
 To fine-tune the UV parameters, bring up the Render Panel by navigating to the side toolbar (next to the Navigation Gizmo). This may be collapsed by default (in which case it is a leftward arrow); click on it to expand. The click on Render Applied Logo to bring up the panel. Logo translation, rotation, scale can be adjusted here. 
