@@ -22,7 +22,11 @@ pip install .
 ```
 
 ## Blender Add-on Installation Instructions
-Open Blender and navigate to Edit > Preferences. Go to Add-ons and click on the downward arrow on the top-right to access the drop-down menu for "Install from disk...". Locate the cloned Python scripts '''GeomDecalApplicator.py''' and '''RenderPanel.py''' and install.
+Open Blender and navigate to Edit > Preferences. Go to Add-ons and click on the downward arrow on the top-right to access the drop-down menu for "Install from disk...". Locate the cloned Python scripts 
+'''GeomDecalApplicator.py''' 
+and 
+'''RenderPanel.py''' 
+to install.
 
 ## How to Use
 The script can be run by using the following command:
