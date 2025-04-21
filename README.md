@@ -1,7 +1,7 @@
 # Natural Logo Insertion
 Insert images onto a target such that it properly conforms to the geometry and respects the scene illumination. This does NOT use projection!
 
-# Building Geometry and Compositing
+## Building Geometry and Compositing
 The composite.py script can be used to convert the image to a mesh to then be used in the Blender Add-on and to composite the result of the Blender Add-on in a way that takes into consideration lighting.
 
 ## Setup
