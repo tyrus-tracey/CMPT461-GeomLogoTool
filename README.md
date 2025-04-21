@@ -36,6 +36,8 @@ The script will then require 5 to 10 seconds to load the MoGe and Intrinsic Imag
 ### Building Geometry
 First use 'Load Target' to select the image, on success a preview of the image will appear on screen. Then use 'Build Geometry' to build the mesh. Once finished you will be prompted to select a folder in which to save the mesh. The camera FOV will also be displayed which will be needed for rendering in the Blender Add-on. You can then use this mesh in the Blender Add-on. 
 
+![composite.py GUI](docs/comp.PNG)
+
 Note that depending on hardware specs, the mesh may need to be first decimated to reduce computation time. Our machines showed good performance at a max of ~200,000 faces.
 
 ![Creating a modifier](docs/deci1.png)
