@@ -159,7 +159,7 @@ def logo_get():
     # Load image to global variable
     global logo_img
     logo_img = t_img
-    info.config(text="Image Loaded")
+    info.config(text="Logo Loaded")
 
 def composite():
     """
@@ -189,29 +189,37 @@ def composite():
     info.config(text="Decomposing Image")
     i_img = np.array(target_img).astype(np.single)
     i_img = i_img / float((2 ** 8) - 1)
-    decomp_results = run_pipeline(int_model,i_img,device='cuda',resize_conf=None)
+    decomp_results = run_pipeline(int_model,i_img,device='cuda',resize_conf=None,linear=False)
     alb = decomp_results['hr_alb']
-    dif = 1 - cg.invert(decomp_results['dif_shd'])
+    dif = decomp_results['dif_shd']
     res = decomp_results['residual']
 
     #Alpha composite logo onto albedo
     #Convert albedo to PIL format, add alpha to logo and then composite
     info.config(text="Compositing Logo")
-    alb = Image.fromarray((alb*255).astype(np.uint8))
-    #alb.save("test1.png")
-    alb.putalpha(255)
-    l_img = logo_img.resize(alb.size)
-    alb = Image.alpha_composite(alb,l_img)
-    #alb.save("test.png")
+
+    #Resize logo
+    alb_tmp = Image.fromarray(np.uint8(alb * 255))
+    l_img = logo_img.resize(alb_tmp.size)
+    l_img = np.asarray(l_img).astype(np.float32) /255
+
+    #Alpha composite
+    alpha = l_img[...,3]
+    alpha = np.stack((alpha,alpha,alpha),axis=2)
+    l_img = l_img[...,:3]
+    alb = alb*(1-alpha) + l_img*(alpha)
+
     #Convert albedo back to array
     alb = np.asarray(alb)
     alb = alb[:,:,0:3]
 
     #Composite Remaining Layers
     info.config(text="Reconstructing Image")
-    alb = alb.astype(np.float32) / 255
-    #recon = np.add(res, np.multiply(alb,dif))
-    recon = cg.view(alb*dif)
+    #recon = res + cg.view(alb*dif)
+    recon = alb * dif + res
+    recon = recon ** (1/2.2) #gamma correct
+    recon = np.clip(recon, 0, 1) #Clip result
+
     #Convert to image format
     recon = Image.fromarray((recon * 255).astype(np.uint8))
     global final_img
